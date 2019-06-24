@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "./NewPost.css";
-import Axios from "./../../axios";
+import Axios from "./../../../axios";
 
 class NewPost extends Component {
   state = {
