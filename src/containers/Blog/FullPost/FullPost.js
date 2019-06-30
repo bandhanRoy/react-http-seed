@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 
 import "./FullPost.css";
-import Axios from "./../../axios";
+import Axios from "./../../../axios";
 
 class FullPost extends Component {
   state = {
     loadedPostState: null
   };
-  componentDidUpdate() {
+  componentDidMount() {
     // hitting api if props.id is not null
-    if (this.props.id) {
+    if (this.props.match.params.id) {
       //checking if the loaded post state is equal to the pervious state
       if (
         !this.state.loadedPostState ||
         (this.state.loadedPostState &&
-          this.state.loadedPostState.id !== this.props.id)
+          this.state.loadedPostState.id !== this.props.match.params.id)
       ) {
-        Axios.get("/posts/" + this.props.id)
+        Axios.get("/posts/" + this.props.match.params.id)
           .then(res => {
             // const post = res.data.map(post => ({ ...post, author: "Max" }));
             this.setState({ loadedPostState: res.data });
